@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+
+        <h1>People</h1>
+
+        <table class="tg">
+            <tr>
+              <th class="tg-jbmi">First Name<br></th>
+              <th class="tg-yw4l">Last Name<br></th>
+              <th class="tg-yw4l">Email</th>
+              <th class="tg-yw4l">Edit<br></th>
+              <th class="tg-yw4l">Delete</th>
+            </tr>
+            {% for people in my_peoples %}
+            <tr>
+                <td class="tg-6k2t">
+                    {{ people.first_name }}
+                </td>
+                <td class="tg-6k2t">
+                    {{ people.last_name }}
+                </td>
+                <td class="tg-6k2t">
+                    {{ people.email }}
+                </td>
+                <td class="tg-6k2t">
+                    <a href="{% url "people_edit" people.id %}" class="editButton">
+                        Edit
+                    </a>
+                </td>
+                <td class="tg-6k2t">
+                    <a href="{% url "people_delete" people.id %}" class="deleteButton">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+        <a href="{% url "people_new" %}" class="newButton">New</a>
+    </body>
+</html>
