@@ -21,24 +21,24 @@ These steps will walk you through how to provision a database in Bluemix and get
 2. Go to the catalog. You can get there by clicking on the "Catalog" button at the top right of most pages within Bluemix.
 3. On the left side of the catalog look in the categories section for Services and then select "Data & Analytics". This will filter the catalog to only include services related to data & analytics. This is where you will find the different database offerings in Bluemix.
 
-<img src="images/dataAnalytics.png">
+<img src="images/dataAnalytics.PNG">
 
 4. Find the service titled "Compose for PostgreSQL" and click on it. This will open up the service page where we can provision the database. 
 
-<img src="images/catalog.png">
+<img src="images/catalog.PNG">
 
 5. Click on the blue "Create" button to provision your very own PostgreSQL database on Bluemix. Wasn't that easy?
 
-<img src="images/create.png">
+<img src="images/create.PNG">
 
 6. When the service is done being created you will be taken to the service page where you can view the credentials of the database.
 7. Click on the "Service Credentials" tab on the left of the page. 
 8. On the credentials page, find the table labeled "Service Credentials" and click on "View Credentials" under the "Actions" column. This will expand the credentials for your database. 
 
-<img src="images/credentialTable.png">
+<img src="images/credentialTable.PNG">
 
 
-<img src="images/creds.png">
+<img src="images/creds.PNG">
 
 We will be coming back to get the credentials later so keep this page open for now. 
 
@@ -60,15 +60,15 @@ In these steps we will focus on getting your app talking to your database.
 1. Open up your cloned project in your favorite code editor.
 2. Find the "settings.py" file in the "crud" folder. This is where some important configurations for your app are stored, including database credentials.
 
-<img src="images/settingspy.png">
+<img src="images/settingspy.PNG">
 
 3. Scroll down to the section labeled "Databases". 
 
-<img src="images/dbSettingsBefore.png">
+<img src="images/dbSettingsBefore.PNG">
 
 4. Then, find the database credentials from Bluemix that we found earlier. We are going to be going back and forth between the credentials and the settings.py file. Look for the "uri_cli" entry near the top of the credentials. This has most of the details that we need but we need to parse out what we need.
 
-<img src="images/uri_cli.png">
+<img src="images/uri_cli.PNG">
 
 5. Let's start with the "host" field. In uri_cli, copy everything after "host" stopping before "port". Copy that into the "host" section of settings.py.
 6. Next, we can do the same thing for the "port" property in settings. Copy everyting in the port variable from uri_cli.
