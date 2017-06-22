@@ -68,13 +68,21 @@ In these steps we will focus on getting your app talking to your database.
 
 4. Then, find the database credentials from Bluemix that we found earlier. We are going to be going back and forth between the credentials and the settings.py file. Look for the "uri_cli" entry near the top of the credentials. This has most of the details that we need but we need to parse out what we need.
 
-<img src="images/uri_cli.PNG">
+<img src="images/uriCLI.PNG">
+
+Red = host
+Blue = port
+Green = name
+Yellow = user
 
 5. Let's start with the "host" field. In uri_cli, copy everything after "host" stopping before "port". Copy that into the "host" section of settings.py.
 6. Next, we can do the same thing for the "port" property in settings. Copy everyting in the port variable from uri_cli.
 7. Then, let's update the "name" property. Look for "dbname" in uri_cli and copy that into "name" in settings.py.
 8. Do the same thing for "user".
 9. The only thing left should be password. This one is a little more tricky. In the service credentials, scroll down until you find the "uri" entry. It should look like a long address starting with "postgres". Find "admin" in the address and notice the colon (:). That weird string of characters between that colon and the "@" is your password. Copy that and add it to "password" in your settings.py.
+
+<img src="images/password.PNG">
+
 
 And that's pretty much it. All we have to do now is push the application to Bluemix and play around with it.
 
