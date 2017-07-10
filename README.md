@@ -1,7 +1,7 @@
 # Django Crud Starter App
 This is a simple django app that tests CRUD operations against a database. In this app, you will deploy a postgresql database from IBM Bluemix, connect the database to your app, and then deploy to Bluemix.
 
-These steps will walk you through the process of cloning a template app and connecting to a database from IBM Bluemix. You can then custimze the app for whatever data you want.
+These steps will walk you through the process of cloning a template app and connecting to a database from IBM Bluemix. You can then customize the app for whatever data you want.
 
 # Getting Started
 
@@ -121,7 +121,7 @@ And with that, you have your own simple CRUD application in Bluemix.
 8. On the next page you can confirm that you meant to delete the entry. After confirming the deletion, you will be taken back to the list view. 
 
 
-#Optional: Customizing the app
+# Optional: Customizing the app
 Now that we have the app deployed, you can customize the model to store whatever data you need for your application. Roughtly, the steps that you need to follow to customize your app are as follows:
 
 - Update your model by changing or adding new fields.
@@ -220,4 +220,4 @@ The completed table now looks like this:
 
 Now you can add birthdays to the users of your application and have them displayed on our table.
 
-These steps that we did above only have to be done if you change the model.py file. If you are just making changes to the templates or views then you can just do the push to Bluemix.
+These steps that we did above to customize the app only have to be done if you change the model.py file. If you are just making changes to the templates or views then you can just do the push to Bluemix.
