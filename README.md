@@ -120,6 +120,104 @@ And with that, you have your own simple CRUD application in Bluemix.
 7. Lastly, we can delete the entry by clicking the "delete" link. This represents the "D" for delete in CRUD. 
 8. On the next page you can confirm that you meant to delete the entry. After confirming the deletion, you will be taken back to the list view. 
 
-#Customizing the app
 
-*Work in progress*
+#Optional: Customizing the app
+Now that we have the app deployed, you can customize the model to store whatever data you need for your application. Roughtly, the steps that you need to follow to customize your app are as follows:
+
+- Update your model by changing or adding new fields.
+- Update views to include the new fields from the model
+- Update templates to display new fields from model
+- Run the makemigrations command locally
+- Run migrate command locally
+- Push app to cloud
+
+For this next section we will go through the steps defined above to customize the basic CRUD app by adding a new field to the modell.
+
+1. First, locate your models.py file and open it in your code editor of choice. This is where the structure of your data is defined. Currently our app only records first name, last name, and email address. To demonstrate how to customize this model I will add a birthday field.
+
+2. In the models.py file lets add your new field. In my case, I will be adding the birthday field.
+
+  ```python
+    birthday = models.DateField(
+        default="1971-01-02"
+    )
+  ```  
+  
+  Since we already have data in the database, you need to add the default variable and supply a value. This is for the data we already have in the database that was created before changing the model. Without the default that old data would have missing entries for the birthday field.
+  
+3. Next we need to change the views to incorporate the new fields for our form. Open up the views.py file. The two views that we are concerned with are PeopleCreate and PeopleUpdate which are the create and update views, respectively. 
+
+4. Add your field name to the list of fields for both the PeopleCreate and People update views. Continuing my example, I will add 'birthday' to the list.
+
+`['first_name', 'last_name', 'birthday', 'email']`
+
+5. After updating the views there is only one more code change we need to make. Navigate to your templates folder and open the peopleList.html template. 
+
+First we need to add the table heading for the column. This involves adding another <th> element with the other column headings.
+
+```html
+<th class="tg-yw4l">Birthday<br></th>
+```
+
+Next, we need to add the table data element in the For loop. The lines that I add are as follows:
+
+  ```html
+<td class="tg-6k2t">
+  {{ people.birthday }}
+</td>
+  ```
+
+The completed table now looks like this:
+
+```html
+<table class="tg">
+            <tr>
+              <th class="tg-jbmi">First Name<br></th>
+              <th class="tg-yw4l">Last Name<br></th>
+              <th class="tg-yw4l">Birthday<br></th>
+              <th class="tg-yw4l">Email</th>
+              <th class="tg-yw4l">Edit<br></th>
+              <th class="tg-yw4l">Delete</th>
+            </tr>
+            {% for people in my_peoples %}
+            <tr>
+                <td class="tg-6k2t">
+                    {{ people.first_name }}
+                </td>
+                <td class="tg-6k2t">
+                    {{ people.last_name }}
+                </td>
+                <td class="tg-6k2t">
+                    {{ people.birthday }}
+                </td>
+                <td class="tg-6k2t">
+                    {{ people.email }}
+                </td>
+                <td class="tg-6k2t">
+                    <a href="{% url "people_edit" people.id %}" class="editButton">
+                        Edit
+                    </a>
+                </td>
+                <td class="tg-6k2t">
+                    <a href="{% url "people_delete" people.id %}" class="deleteButton">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+ ```
+
+6. Now we need to tell the database of the changes we made. Go back to your command prompt and navigate to the same level as the manage.py file. Run the following commands:
+
+`python manage.py makemigrations`
+
+`python manage.py migrate`
+
+7. The last step is to deploy the app to Bluemix again. To do that just run the following command:
+
+`bluemix app push [app name]`
+
+Now you can add birthdays to the users of your application and have them displayed on our table.
+
+These steps that we did above only have to be done if you change the model.py file. If you are just making changes to the templates or views then you can just do the push to Bluemix.
