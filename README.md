@@ -122,7 +122,7 @@ And with that, you have your own simple CRUD application in Bluemix.
 
 
 # Optional: Customizing the app
-Now that we have the app deployed, you can customize the model to store whatever data you need for your application. Roughtly, the steps that you need to follow to customize your app are as follows:
+Now that we have the app deployed, you can customize the model to store whatever data you need for your application. Roughly, the steps that you need to follow to customize your app are as follows:
 
 - Update your model by changing or adding new fields.
 - Update views to include the new fields from the model
@@ -131,7 +131,7 @@ Now that we have the app deployed, you can customize the model to store whatever
 - Run migrate command locally
 - Push app to cloud
 
-For this next section we will go through the steps defined above to customize the basic CRUD app by adding a new field to the modell.
+For this next section we will go through the steps defined above to customize the basic CRUD app by adding a new field to the model.
 
 1. First, locate your models.py file and open it in your code editor of choice. This is where the structure of your data is defined. Currently our app only records first name, last name, and email address. To demonstrate how to customize this model I will add a birthday field.
 
@@ -147,11 +147,11 @@ For this next section we will go through the steps defined above to customize th
   
 3. Next we need to change the views to incorporate the new fields for our form. Open up the views.py file. The two views that we are concerned with are PeopleCreate and PeopleUpdate which are the create and update views, respectively. 
 
-4. Add your field name to the list of fields for both the PeopleCreate and People update views. Continuing my example, I will add 'birthday' to the list.
+4. Add your field name to the list of fields for both the PeopleCreate and PeopleUpdate views. Continuing my example, I will add 'birthday' to the list.
 
 `['first_name', 'last_name', 'birthday', 'email']`
 
-5. After updating the views there is only one more code change we need to make. Navigate to your templates folder and open the peopleList.html template. 
+5. After updating the views there is only one more code change we need to make. Navigate to your templates folder and open the people_list.html template. 
 
 First we need to add the table heading for the column. This involves adding another <th> element with the other column headings.
 
